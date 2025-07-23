@@ -1,0 +1,33 @@
+Context Class:-  
+using CRUD.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace CRUD.Data
+{
+    public class ProductContext: DbContext
+    {
+        public ProductContext(DbContextOptions<ProductContext> options) : base(options)
+        {
+            
+        }
+
+        public DbSet<Student> Students { get; set; }
+
+
+    }
+}
+
+-----------------------------------------------------------------------------------------------------
+Program.cs:-
+builder.Services.AddDbContext<ProductContext>(options => 
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+-----------------------------------------------------------------------------------------------------
+applicationsettings.json:-
+ "ConnectionStrings": {
+   "DefaultConnection" : "Server= ; Database= ;Trusted_Connection=True; TrustServerCertificate=True;"
+ },
+----------------------------------------------------------------------------------------------------
+add-migration initial
+update-database 
+-----------------------------------------------------------------------------------------------------
+last step:- Change layout in folder name Shared/_Layout.cshtml
